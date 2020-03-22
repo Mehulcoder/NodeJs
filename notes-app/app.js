@@ -28,7 +28,3 @@ yargs.command({
 })
 
 yargs.parse();
-// var command = process.argv[2];
-
-
-// console.log(yargs.argv); 
