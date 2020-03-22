@@ -1,4 +1,18 @@
-var fs = require('fs');
+const validator = require('validator');
+const chalk = require('chalk');
+var getNotes = require('./notes');
+const yargs = require('yargs');
 
-// fs.writeFileSync('notes.txt', 'Hello people');
-fs.appendFileSync('notes.txt', 'Hello Ive appended this text');
+yargs.command({
+    command: 'list',
+    description: 'List all the stuff',
+    builder
+    handler: function () {  
+        console.log("Listing all the stuff");
+    }
+})
+
+
+// var command = process.argv[2];
+
+console.log(yargs.argv); 
