@@ -7,7 +7,7 @@ function getNotes() {
 var addNote = function (title, body) {  
     var notes = loadNodes();
     var duplicateNotes = notes.filter(function (note) {  
-        return note.title === title
+        return note.title === title;
     });
 
     if (duplicateNotes.length===0) {
@@ -18,7 +18,7 @@ var addNote = function (title, body) {
         console.log("New note added");
         saveNotes(notes);
     }else{
-        console.log("Duplicate!! Already exists")
+        console.log("Duplicate!! Already exists");
     }
     
     
@@ -39,7 +39,26 @@ var loadNodes = function () {
     }
 };
 
+var removeNote = function (title) {  
+    var notes = loadNodes();
+    var foundNote = notes.filter(function (note) {
+        console.log(note.title,'-->',title);
+        return note.title.toString === title.toString;
+    });
+
+    console.log("FOund Note: ",foundNote);
+
+    if (foundNote.length===0) {
+        console.log("Element not found!");
+    }else{
+        foundNote.forEach(element => {
+            // console.log(element);
+        });
+    }
+};
+
 module.exports = {
     getNotes: getNotes,
-    addNote: addNote
+    addNote: addNote,
+    removeNote: removeNote
 };
