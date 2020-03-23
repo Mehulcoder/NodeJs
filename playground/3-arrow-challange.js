@@ -17,13 +17,6 @@ const tasks = {
         completed: false
     }],
 
-    // function getTasksToDo(tasks) {
-        
-    // }
-    // getTasksToDo(tasks) : function (tasks) {  
-        
-    // }
-
     getTasksToDo: function () {
         var ans = [];
         // console.log(this.tasks[0].completed);
