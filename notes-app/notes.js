@@ -48,13 +48,13 @@ var removeNote = function (title) {
 
     var index = 0;
     if (foundNote.length===0) {
-        console.log(chalk.green("Element not found!"));
+        console.log(chalk.bgRedBright("Element not found!"));
     }else{
         foundNote.forEach(element => {
             index = notes.indexOf(element);
             notes.splice(index, 1);
             saveNotes(notes);
-            console.log(chalk.bgGreen.blackBright("Element Removed"));
+            console.log(chalk.bgGreen.redBright("Element Removed"));
         });
     }
 
