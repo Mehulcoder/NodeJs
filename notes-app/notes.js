@@ -1,4 +1,5 @@
 var fs = require('fs');
+var chalk = require('chalk');
 
 function getNotes() {
     return "Your notes...";
@@ -15,10 +16,10 @@ var addNote = function (title, body) {
             title:title,
             body:body
         });
-        console.log("New note added");
+        console.log(chalk.green("New note added"));
         saveNotes(notes);
     }else{
-        console.log("Duplicate!! Already exists");
+        console.log(chalk.redBright("Duplicate!! Already exists"));
     }
     
     
@@ -42,19 +43,22 @@ var loadNodes = function () {
 var removeNote = function (title) {  
     var notes = loadNodes();
     var foundNote = notes.filter(function (note) {
-        console.log(note.title,'-->',title);
-        return note.title.toString === title.toString;
+        return note.title === title;
     });
 
-    console.log("FOund Note: ",foundNote);
-
+    var index = 0;
     if (foundNote.length===0) {
-        console.log("Element not found!");
+        console.log(chalk.green("Element not found!"));
     }else{
         foundNote.forEach(element => {
-            // console.log(element);
+            index = notes.indexOf(element);
+            notes.splice(index, 1);
+            saveNotes(notes);
+            console.log(chalk.bgGreen.blackBright("Element Removed"));
         });
     }
+
+    
 };
 
 module.exports = {
