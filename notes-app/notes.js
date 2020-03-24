@@ -7,11 +7,12 @@ function getNotes() {
 
 var addNote = function (title, body) {  
     var notes = loadNodes();
-    var duplicateNotes = notes.filter(function (note) {  
+
+    var duplicateNote = notes.find(function (note) {  
         return note.title === title;
     });
 
-    if (duplicateNotes.length===0) {
+    if (!duplicateNote) {
         notes.push({
             title:title,
             body:body
@@ -28,7 +29,7 @@ var addNote = function (title, body) {
 var saveNotes = function (notes) {  
     const dataJSON = JSON.stringify(notes);
     fs.writeFileSync('notes.json', dataJSON);
-}
+};
 
 var loadNodes = function () {
     try {
@@ -71,9 +72,25 @@ var listNotes = () => {
     });
 };
 
+var readNote = function(title){
+    var notes = loadNodes();
+    var foundNote = notes.find(function (note) {  
+        return note.title === title;
+    });
+
+    if (foundNote!=undefined) {
+        console.log(foundNote);
+    }else{
+        console.log("Item has not been found");
+    }
+
+    // console.log("hello");
+};
+
 module.exports = {
     getNotes: getNotes,
     addNote: addNote,
     removeNote: removeNote,
-    listNotes:listNotes
+    listNotes:listNotes,
+    readNote:readNote
 };
