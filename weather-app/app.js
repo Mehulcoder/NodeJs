@@ -9,8 +9,8 @@ request({url:url1, json:true}, (err, data)=>{
     console.log("It is currently "+data.body.currently.temperature+" degree Celcius");
 });
 
-request({url:url2}, (err, data)=>{
-    var parsedData = JSON.parse(data.body);
+request({url:url2, json:true}, (err, data)=>{
+    // var parsedData = JSON.parse(data.body);
     // console.log(data.body.currently);
-    console.log("We are currently at Lattitude: "+parsedData.features.center[0]+" and Longitude: "+parsedData.features.center[1]);
+    console.log("We are currently at Lattitude: "+data.body.features[0].center[1]+" Longitude: "+data.body.features[0].center[0]);
 });
