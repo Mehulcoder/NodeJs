@@ -11,9 +11,12 @@ var forecast = (lat, long, callback)=>{
             // console.log("Invalid Coorinates");
             callback("Invalid Coordintes", undefined);
         }else{
-            callback(undefined, {
-                temperature: body.currently.temperature
-            })
+            // console.log(body.currently);
+            var forecast = "Currently the temprature is, "+ body.currently.temperature+' degree F. The weather is '+body.currently.summary+
+            ". And the chances of precipitaion are "+body.currently.precipProbability
+            callback(undefined, 
+                forecast
+            )
         }
     });
 };

@@ -7,6 +7,7 @@ var geoCode = (address, callback)=>{
         if (error) {
             callback('Unable to connect to the location', undefined);
         }else if(body.features.length===0){
+            // console.log("We are here");
             callback('Unable to find the location', undefined);
         }else{
             var lat = body.features[0].center[1];
